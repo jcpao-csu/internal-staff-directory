@@ -94,6 +94,95 @@ else:
 
 PETS = pets.copy()
 
+# Merge STAFF_VIEW and PETS table for staff directory
+
+def directory_df_merge(
+    pet_df: pd.DataFrame = pets.copy(), 
+    staff_df: pd.DataFrame = staff_view.copy()
+) -> pd.DataFrame:
+    """
+    Merge pet df and staff df together to display internal staff directory
+    """
+
+    pet_df.rename(
+        columns={
+            "Pet Full Name": "Full Name", 
+            # "old_col2": "First Name", --no col
+            # "Middle Name" --no col
+            "Pet Last Name": "Last Name",
+            # "Suffix", --no col
+            "Pet Pref Name": "Preferred Name",
+            # "Karpel ID", --no col
+            # "Work Phone #", --no col
+            # "Personal Phone #", --no col
+            # "Work Email Address", --already matching
+            # "Personal Email Address", --no col
+            "Pet Job Title": "Job Title",
+            # "Position", --no col
+            # "Assigned Unit", --already matching
+            # "Office Location", --already matching
+            # "Hire Start Date", --no col
+            # "Service (days)", --no col
+            # "Service (percentile)", --no col
+            "Pet DOB": "DOB",
+            "Pet DOB Month": "DOB (Month)",
+            "Pet DOB Day": "DOB (Day)",
+            # "Race", --no col
+            # "Sex", --no col
+            "Pet PhotoID": "PhotoID"
+        }, inplace=True)
+
+    pet_df["First Name"] = pet_df["Preferred Name"]
+    pet_df["Position"] = "PET" # custom addition to job position (position_enum)
+
+    new_cols = ["Middle Name", "Suffix", "Karpel ID", "Hire Start Date", "Service (days)", "Service (percentile)", "Race", "Sex"]
+    for col in new_cols:
+        pet_df[col] = None
+
+    pet_df = pet_df.merge(staff_df[["Work Email Address", "Work Phone #", "Personal Phone #", "Personal Email Address"]].copy(), how="left", on="Work Email Address")
+
+    # # Drop -- "Owner Name", "Owner PhotoID"
+    # pet_df.drop(
+    #     columns=[
+    #         "Owner Name", 
+    #         "Owner PhotoID"
+    #     ], inplace=True
+    # )
+
+    # Rearrange pet_df cols in staff_df col order 
+    pet_df = pet_df[[
+        "Full Name", 
+        "First Name",
+        "Middle Name",
+        "Last Name",
+        "Suffix",
+        "Preferred Name",
+        "Karpel ID",
+        "Work Phone #",
+        "Personal Phone #",
+        "Work Email Address",
+        "Personal Email Address",
+        "Job Title",
+        "Position",
+        "Assigned Unit",
+        "Office Location",
+        "Hire Start Date",
+        "Service (days)",
+        "Service (percentile)",
+        "DOB",
+        "DOB (Month)",
+        "DOB (Day)",
+        "Race",
+        "Sex",
+        "PhotoID"
+    ]]
+
+    merge_df = pd.concat([staff_df, pet_df], ignore_index=True)
+
+    return merge_df
+
+STAFF_DIRECTORY = directory_df_merge()
+
 # --- Log activity --- 
 
 def log_user(
@@ -125,45 +214,3 @@ def log_user(
             else:
                 conn.commit()
                 # st.success(f"User logged: {email_address} - {activity_type}")
-
-    #     cur.close()
-    # conn.close()
-
-
-# # Define jcpao_log_activity()
-# def jcpao_log_activity(work_email, activity_type, _connection_pool=db_connection):
-#     """Log user activity in the user_activity table"""
-#     # activity_type = 'SIGN UP' / 'LOGIN' / 'UPDATE PROFILE' / 'REMOVE PROFILE' / 'ANNOUNCEMENT' / 'ADMIN-AUTHORIZE' / 'ADMIN-REMOVE PROFILE' / 'POST-TRIAL SURVEY' / 'RESET PASSWORD' / 
-#                     # 'UPDATE PHOTO' / 'UPDATE NAME' / 'UPDATE JOB' / 'UPDATE OFFICE' / 'UPDATE DEMOGRAPHIC' / 'UPDATE INTERN'
-
-#     conn = _connection_pool.getconn()
-#     try:
-#         with conn.cursor() as cur:
-#             try: 
-#                 query = sql.SQL("INSERT INTO user_activity (work_email, activity) VALUES (%s, %s);")
-#                 cur.execute(query, (work_email, activity_type))
-#             except psycopg2.Error as e:
-#                 st.error(f"An error has occurred. Failed to log activity.")
-#             else:
-#                 conn.commit()
-
-#     finally:
-#         _connection_pool.putconn(conn)
-
-# # Define external_log_activity()
-# def external_log_activity(_connection_pool, db_table_name, user_email, user_ip): # police_log, courts_log 
-
-#     with _connection_pool.getconn() as conn:
-
-#         with conn.cursor() as cur:
-#             try: 
-#                 query = sql.SQL("INSERT INTO {table_name} (user_email, user_ip) VALUES (%s, %s)").format(
-#                     table_name=sql.Identifier(db_table_name)
-#                 )
-#                 cur.execute(query, (user_email, user_ip))
-#             except psycopg2.Error as e:
-#                 st.error(f"An error has occurred.")
-#             else:
-#                 conn.commit()
-#         cur.close()
-#     conn.close()
