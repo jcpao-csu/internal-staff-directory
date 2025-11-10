@@ -14,28 +14,31 @@ import pandas as pd
 
 # Define get_database_session() 
 @st.cache_resource
-def get_database_session(database_url):
+def get_database_session(database_url: str):
     try: 
         # Create a database session object that points to the URL.
         pool = ConnectionPool(
-            database_url, 
+            conninfo=database_url, 
             min_size=1, 
-            max_size=10
+            max_size=10,
+            max_lifetime=300, # recycle connections every 300 seconds
+            max_idle=60, # close idle connections after 60 seconds
+            timeout=10 # wait 10 seconds to connect
         ) # Initialize connection pool
         return pool
     except psycopg.OperationalError as e:
-        st.error(f"Network is blocking connection to the database server.\nPlease try again on a different network/internet connection, or reach out to admin at ujcho@jacksongov.org.\n{e}")
+        st.error(
+            f"Network is blocking connection to the database server.\n"
+            f"Please try again on a different network/internet connection, or reach out to admin at ujcho@jacksongov.org.\n{e}"
+        )
         return None
 
 # Establish NEON database connection (via psycopg3)
 database_url = st.secrets["neonDB"]["database_url"]
 
 # Attempt connection
-try:
-    db_connection = get_database_session(database_url)
-except Exception as e:
-    print(f"{e}")
-    st.stop()
+db_connection = get_database_session(database_url)
+
 
 # --- Define helper functions ---
 
@@ -107,19 +110,24 @@ def log_user(
     See technical notes: https://www.psycopg.org/psycopg3/docs/basic/params.html
     """
 
-    try:
-        if isinstance(_connection, ConnectionPool):
-            with _connection.connection() as conn:
-                with conn.cursor() as cur:
-                    cur.execute(
-                        "INSERT INTO user_activity (work_email, activity) VALUES (%s, %s)",
-                        (email_address, activity_type),
-                    )
+    with _connection.connection() as conn:
+        if conn.closed: # grab fresh connection if stale
+            conn = _connection.connection()
+
+        with conn.cursor() as cur:
+            try:
+                cur.execute(
+                    "INSERT INTO user_activity (work_email, activity) VALUES (%s, %s)",
+                    (email_address, activity_type),
+                )
+            except Exception as e:
+                st.error(f"Error logging activity: {e}")
+            else:
                 conn.commit()
+                # st.success(f"User logged: {email_address} - {activity_type}")
 
-    except Exception as e:
-        st.error(f"Error logging activity: {e}")
-
+    #     cur.close()
+    # conn.close()
 
 
 # # Define jcpao_log_activity()
