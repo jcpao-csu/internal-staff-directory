@@ -12,7 +12,7 @@ st.set_page_config(
     page_title="JCPAO Directory", # court-view only
     page_icon=jcpao_logo, # cloudinary.CloudinaryImage('jcpao_logo_200x200').build_url()
     layout="wide", # "centered" or "wide"
-    initial_sidebar_state="collapsed", # "expanded" / "auto" / "collapsed"
+    initial_sidebar_state="auto", # "expanded" / "auto" / "collapsed"
     menu_items={
         # 'Get Help': 'https://www.extremelycoolapp.com/help',
         'Report a bug': "mailto:ujcho@jacksongov.org", # To report a bug, please email
