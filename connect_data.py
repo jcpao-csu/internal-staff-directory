@@ -1,7 +1,8 @@
 import streamlit as st
-from psycopg_pool import ConnectionPool
 import psycopg
+from psycopg_pool import ConnectionPool
 import pandas as pd
+import time
 
 # --- Local .env file ---
 # from dotenv import load_dotenv
@@ -235,9 +236,8 @@ STAFF_DIRECTORY = directory_df_merge()
 # --- Log activity --- 
 
 def log_user(
-    # insert_table: str, # preset table in query 
     email_address: str, 
-    activity_type: str,
+    activity_type: str, 
     _connection: ConnectionPool = db_connection
 ):
     """
@@ -248,21 +248,40 @@ def log_user(
     See technical notes: https://www.psycopg.org/psycopg3/docs/basic/params.html
     """
 
-    with _connection.connection() as conn:
-        if conn.closed: # grab fresh connection if stale
-            conn = _connection.connection()
+    try:
+        # Always grab a fresh connection from the pool
+        with _connection.connection() as conn:
+            if conn.closed:
+                # Replace with a fresh connection if the previous one was bad or stale
+                conn = _connection.connection()
 
-        with conn.cursor() as cur:
-            try:
+            with conn.cursor() as cur:
                 cur.execute(
                     "INSERT INTO user_activity (work_email, activity) VALUES (%s, %s)",
                     (email_address, activity_type),
                 )
-            except Exception as e:
-                st.error(f"Error logging activity: {e}")
-            else:
                 conn.commit()
-                # st.success(f"User logged: {email_address} - {activity_type}")
+
+    except psycopg.OperationalError as e:
+        # This catches stale/SSL-closed connections and reattempts once
+        try:
+            # st.warning("Reconnecting to database...")
+            with _connection.connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        "INSERT INTO user_activity (work_email, activity) VALUES (%s, %s)",
+                        (email_address, activity_type),
+                    )
+                    conn.commit()
+        except Exception as e2:
+            error_msg1 = st.error(f"Database reconnect failed: {e2}")
+            time.sleep(2)
+            error_msg1.empty()
+
+    except Exception as e:
+        error_msg2 = st.error(f"Error logging activity: {e}")
+        time.sleep(2)
+        error_msg2.empty()
 
 
 # Define refresh_app() function
