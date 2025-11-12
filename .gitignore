@@ -1,0 +1,6 @@
+.venv/
+.uv/
+.streamlit/
+archive/
+.python-version
+.DS_Store

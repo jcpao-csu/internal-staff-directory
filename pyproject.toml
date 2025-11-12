@@ -1,0 +1,13 @@
+[project]
+name = "internal-staff-directory"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "cloudinary>=1.44.1",
+    "ipykernel>=7.1.0",
+    "psycopg[binary,pool]>=3.2.12",
+    "streamlit-extras>=0.7.8",
+    "streamlit[auth,charts,pdf]>=1.51.0",
+]
