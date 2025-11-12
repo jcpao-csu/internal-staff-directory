@@ -50,6 +50,62 @@ def parse_enum(array):
     array = array.strip('{}')
     return array.split(',') if array else []
 
+# Define display_personal_name()
+# def display_personal_name(pref_name, first_name):
+#     if not pref_name:
+#         return first_name
+#     else:
+#         return pref_name
+
+def display_personal_name(row):
+    if row['Preferred Name']:
+        return f"{row['Preferred Name'].strip()} {row['Last Name'].strip()}"
+    else:
+        return f"{row['First Name'].strip()} {row['Last Name'].strip()}"
+
+# Define ordinal() 
+def ordinal(n):
+    if 10 <= n % 100 <= 20: # Covers unique cases, like 11th, 12th, 13th
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suffix}"
+
+# Define display_service()
+def display_service(service_days, service_percentile):
+    if service_days and service_percentile:
+        st.write(f"**Fun fact:** You have been with the JCPAO for {service_days} days, and are in the ***:blue[{ordinal(service_percentile)} percentile]*** among all active JCPAO employees! Thank you for your service to the JCPAO!")
+
+# Birthday Month (not enum)
+
+# Filter by birthday month:
+months_dict = {
+    '1': 'Jan',
+    '2': 'Feb',
+    '3': 'Mar',
+    '4': 'Apr',
+    '5': 'May',
+    '6': 'Jun',
+    '7': 'Jul',
+    '8': 'Aug',
+    '9': 'Sep',
+    '10': 'Oct',
+    '11': 'Nov',
+    '12': 'Dec'
+}
+
+def parse_month(type: str, value: str = None):
+    month_list = list(months_dict.keys())
+
+    if type == "options":
+        return month_list
+    elif type == "index":
+        try:
+            return month_list.index(value)
+        except ValueError: # Value isn't in the list 
+            return None
+    elif type == "format_func":
+        return lambda x: months_dict[x]
 
 # --- Define function to read tables from Neon DB ---
 
@@ -125,8 +181,8 @@ def directory_df_merge(
             # "Service (days)", --no col
             # "Service (percentile)", --no col
             "Pet DOB": "DOB",
-            "Pet DOB Month": "DOB (Month)",
-            "Pet DOB Day": "DOB (Day)",
+            "Pet DOB Month": "DOB Month",
+            "Pet DOB Day": "DOB Day",
             # "Race", --no col
             # "Sex", --no col
             "Pet PhotoID": "PhotoID"
@@ -140,14 +196,6 @@ def directory_df_merge(
         pet_df[col] = None
 
     pet_df = pet_df.merge(staff_df[["Work Email Address", "Work Phone #", "Personal Phone #", "Personal Email Address"]].copy(), how="left", on="Work Email Address")
-
-    # # Drop -- "Owner Name", "Owner PhotoID"
-    # pet_df.drop(
-    #     columns=[
-    #         "Owner Name", 
-    #         "Owner PhotoID"
-    #     ], inplace=True
-    # )
 
     # Rearrange pet_df cols in staff_df col order 
     pet_df = pet_df[[
@@ -170,14 +218,15 @@ def directory_df_merge(
         "Service (days)",
         "Service (percentile)",
         "DOB",
-        "DOB (Month)",
-        "DOB (Day)",
+        "DOB Month",
+        "DOB Day",
         "Race",
         "Sex",
         "PhotoID"
     ]]
 
     merge_df = pd.concat([staff_df, pet_df], ignore_index=True)
+    merge_df.sort_values(by=["Last Name", "First Name"], ascending=[True, True], inplace=True, ignore_index=True)
 
     return merge_df
 
@@ -214,3 +263,10 @@ def log_user(
             else:
                 conn.commit()
                 # st.success(f"User logged: {email_address} - {activity_type}")
+
+
+# Define refresh_app() function
+def refresh_app():
+    st.cache_data.clear()
+    st.cache_resource.clear()
+    st.rerun()
