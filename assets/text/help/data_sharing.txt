@@ -1,0 +1,37 @@
+The JCPAO maintains a very strict data sharing policy to protect employees and their personnel data.
+Collected user data is only used to maintain the Office's directories.
+Please be rest assured that no personnel data is shared publicly. 
+The current version of the online directories are only accessible with the security code, which will be changed regularly to maintain security.
+Staff will be made aware to changes in the security code via email, so that they will be able to continue to access the directory. 
+Further, the specific personnel information shared in the directories is listed below:
+
+#### Internal Staff Directory  
+- All staff included
+- Profile Information:  
+    - Preferred name (if none, First Name) & Last Name
+    - Job Title
+    - Position
+    - Assigned Unit(s)
+    - Office Location
+    - Birthday (MM/DD)
+    - Work Phone Number
+    - Work Email Address
+    - Personal Phone Number
+
+#### Court-View Directory  
+- Only includes Exec Staff and APAs
+- Profile Information:
+    - Full legal name 
+    - Job Title
+    - Position
+    - Assigned Unit(s)
+    - Office Location
+    - Work Phone Number
+    - Work Email Address
+    - Personal Phone Number
+
+#### Staff Dashboard 
+- The staff dashboard contains aggregated demographic data, namely:
+    - Service duration (length of employment with the JCPAO)
+    - Race/ethnicity
+    - Gender

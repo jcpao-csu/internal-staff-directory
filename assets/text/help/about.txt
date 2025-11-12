@@ -1,0 +1,4 @@
+The JCPAO Portal was built by Joseph Cho of the Crime Strategies Unit (CSU) of the Jackson County Prosecuting Attorney's Office.  
+The backend comprises a **[NeonDB PostgreSQL](https://neon.com/)** database and **[Cloudinary](https://cloudinary.com/)** media file management SaaS,  
+whereas the frontend is built entirely on the Python **[Streamlit](https://streamlit.io/)** library framework.  
+The CSU is responsible for maintaining and regularly updating the JCPAO Portal.  
