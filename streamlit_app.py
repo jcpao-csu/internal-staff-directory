@@ -138,18 +138,18 @@ else: # st.session_state["verified"] == TRUE
     # Display APA Directory 
     directory_pages = {
         "Home": [
-            st.Page("pages/welcome_page.py", title="JCPAO Portal", icon=":material/home:"), # 🏡 
+            st.Page("directory_pages/welcome_page.py", title="JCPAO Portal", icon=":material/home:"), # 🏡 
         ],
         "Directories": [
-            st.Page("pages/staff_directory.py", title="Staff Directory", icon=":material/contacts:"), # ☎️
-            st.Page("pages/staff_birthdays.py", title="Staff Birthdays", icon=":material/cake:"), # 🎂
-            st.Page("pages/court_directory.py", title="Court-view Directory", icon=":material/account_balance:"), # 🏛️
+            st.Page("directory_pages/staff_directory.py", title="Staff Directory", icon=":material/contacts:"), # ☎️
+            st.Page("directory_pages/staff_birthdays.py", title="Staff Birthdays", icon=":material/cake:"), # 🎂
+            st.Page("directory_pages/court_directory.py", title="Court-view Directory", icon=":material/account_balance:"), # 🏛️
         ],
         "Resources": [
             # st.Page("court_view.py", title="JCPAO Attorney Directory", icon=":material/contact_page:"),
-            st.Page("pages/staff_dashboard.py", title="Staff Dashboard", icon=":material/monitoring:"),
-            st.Page("pages/faq.py", title="Frequently Asked Questions", icon=":material/question_mark:"),
-            st.Page("pages/resources.py", title="Office Resources", icon=":material/support_agent:"),
+            st.Page("directory_pages/staff_dashboard.py", title="Staff Dashboard", icon=":material/monitoring:"),
+            st.Page("directory_pages/faq.py", title="Frequently Asked Questions", icon=":material/question_mark:"),
+            st.Page("directory_pages/resources.py", title="Office Resources", icon=":material/support_agent:"),
         ], 
     }
 
