@@ -1,6 +1,7 @@
 .venv/
 .uv/
-.streamlit/
+.streamlit/*
+!.streamlit/config.toml
 archive/
 .python-version
 .DS_Store
