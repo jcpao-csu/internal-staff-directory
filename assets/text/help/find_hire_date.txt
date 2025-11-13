@@ -1,0 +1,3 @@
+To find your hire (start) date, please go to [Workday](r"https://wd5.myworkday.com/wday/authgwy/jacksongov/login.htmld?returnTo=%2fjacksongov%2fd%2fhome.htmld%3freloadToken%3dcd1ecc783d150ffa2cd0a828900ca9cb2570101ba04c0f9ff9d446577767b1d4"):   
+- Find **Menu** > **Personal Information** > **View** > **About Me** > Under **Job Details** > **Hire Date**   
+- Your hire date should also be on your employee badge

@@ -26,16 +26,3 @@ Upon start of employment, employees will be prompted to complete a personnel int
 | **Headshot Photo**                      | Headshot photo (must be in a 1:1 ratio)                                                                         | Preferred .png or .jpeg format                                                                                                                                                                                                                                                        | <img src="https://res.cloudinary.com/jcpao-csu/image/upload/v1762563707/truman_example.jpg" width="200" height="200">                                         |
 
 
-#### Job Title
-
-- To find your job title, please go to [Workday](r"https://wd5.myworkday.com/wday/authgwy/jacksongov/login.htmld?returnTo=%2fjacksongov%2fd%2fhome.htmld%3freloadToken%3dcd1ecc783d150ffa2cd0a828900ca9cb2570101ba04c0f9ff9d446577767b1d4"):  
-    - Find **Menu** > **Personal Information** > **View** > **About Me** > Under **Job Details** > **Position**  
-    - :red[**Ignore the code**] prefixed to **Position** (should look like P-XXXXX, your five-digit employee ID)  
-
-
-#### Hire Date 
-
-- To find your hire (start) date, please go to [Workday](r"https://wd5.myworkday.com/wday/authgwy/jacksongov/login.htmld?returnTo=%2fjacksongov%2fd%2fhome.htmld%3freloadToken%3dcd1ecc783d150ffa2cd0a828900ca9cb2570101ba04c0f9ff9d446577767b1d4"):   
-    - Find **Menu** > **Personal Information** > **View** > **About Me** > Under **Job Details** > **Hire Date**   
-    - Your hire date should also be on your employee badge
-
