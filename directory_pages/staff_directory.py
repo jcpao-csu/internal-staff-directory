@@ -271,6 +271,11 @@ def display_employee(row):
             } # units_badge.get(row['Assigned Unit'], row['Assigned Unit'])
             # unit_badge = st.badge(f"**{' / '.join(units_badge.get(item, item) for item in row['Assigned Unit'])}**", icon=None, color="blue")
 
+            if row['Assigned Unit']:
+                unit = ' / '.join(row['Assigned Unit'])
+            else:
+                unit = ':red[???]' # N/A 
+
             # Office Location BADGE
             locations_badge = {
                 'Dt-11': 'Downtown, 11th',
@@ -296,7 +301,8 @@ def display_employee(row):
             # Display BADGE thread 
             st.markdown( # position_badge, unit_badge, location_badge, dob_badge
                 f":green-badge[**{positions_badge.get(row['Position'], row['Position'])}**]"
-                f":blue-badge[**{' / '.join(units_badge.get(item, item) for item in row['Assigned Unit'])}**]"
+                # f":blue-badge[**{' / '.join(units_badge.get(item, item) for item in row['Assigned Unit'])}**]"
+                f":blue-badge[**{unit}**]"
                 f":orange-badge[🏢 **{locations_badge.get(row['Office Location'], row['Office Location'])}**]"
                 f":violet-badge[🎉 **{dob_month}/{dob_day}**]"
             )

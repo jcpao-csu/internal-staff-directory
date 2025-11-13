@@ -202,7 +202,7 @@ def configure_badge(row):
     if row['Assigned Unit']:
         unit = ' / '.join(row['Assigned Unit'])
     else:
-        unit = 'N/A'
+        unit = ':red[???]' # N/A 
     
     # Drug Court 
     if 'Drug' in unit:
