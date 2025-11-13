@@ -3,3 +3,18 @@
 Here, you can explore staff directories, dashboards, and other online resources.
 If you have any suggestions on how to improve the online tool (including ideas on what other features to add), please reach out to [Joseph Cho](mailto:ujcho@jacksongov.org)! 
 Community feedback and input are welcome! 
+
+#### :blue[**User Checklist]:** 
+
+All users, please make sure your directory information is accurate. Use the checklist below: 
+[] My profile is in the directory (check the *Staff Directory* under '*Directories*') 
+[] My profile contains a headshot photo (check *FAQ* under *Resources* on how to update your headshot)
+[] My profile information is up-to-date and accurate
+    [] Name 
+    [] Job Title
+    [] :green-badge[Position] / :blue-badge[Assigned Unit] / :orange-badge[Office Location] / :purple-badge[Birthday] 
+    [] Work Phone # 
+    [] Work Email Address (@jacksongov.org)
+    [] Personal Phone #
+
+If you do not see your profile in the directory, that means you have not yet been entered into our directory! Please reach out to both [Candace Mims](mailto:candace.mims@jacksongov.org) and [Joseph Cho](mailto:ujcho@jacksongov.org) to complete the personnal intake survey.
