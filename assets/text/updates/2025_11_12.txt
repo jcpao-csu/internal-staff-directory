@@ -8,7 +8,8 @@ Community feedback and input are welcome!
 
 All users, please make sure your directory information is accurate. Use the checklist below: 
 - [ ] My profile is in the directory (check the *Staff Directory* under *Directories*) 
-- [ ] My profile contains a headshot photo (check *FAQ* under *Resources* on how to update your headshot)
+- [ ] My profile contains a headshot photo (check *FAQ* under *Resources* on how to update your headshot)  
+
 **My profile information is up-to-date and accurate:**
     - [ ] Name 
     - [ ] Job Title
