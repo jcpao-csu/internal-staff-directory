@@ -83,7 +83,7 @@ with st.sidebar:
     st.title("Jackson County Prosecuting Attorney's Office")
     st.write("***Court-View Directory***")
     st.divider()
-    st.markdown("This directory provides information on all active attorneys in the Jackson County Prosecuting Attorney's Office. This is a copy of the [online directory](https://jcpao-directory-court-view.streamlit.app/) that has been created for Court officials and staff.")
+    st.markdown("This directory provides information on all active attorneys in the Jackson County Prosecuting Attorney's Office. This is a copy of the [online directory](https://jcpao-court-directory.streamlit.app/) that has been created for Court officials and staff.")
     st.divider()
     st.selectbox(
             "**Select the directory to view:**",

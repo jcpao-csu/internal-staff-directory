@@ -37,6 +37,7 @@ jcpao_linkedin = r"https://www.linkedin.com/in/jcpao" # outdated link? (JPB) -- 
 # CSU resources 
 report_search = r"https://jcpao-search.streamlit.app/"
 jcpao_dashboard = r"https://jcpao-dashboard.streamlit.app/"
+court_directory = r"https://jcpao-court-directory.streamlit.app/"
 
 # # --- Configure Streamlit page settings --- 
 # jcpao_logo = Path("assets/logo/jcpao_logo_500x500.png")
@@ -98,6 +99,7 @@ with col1:
 
     st.page_link(report_search, label="Police Report Number Search Tool", icon="🚔")
     st.page_link(jcpao_dashboard, label="JCPAO Dashboard", icon="📊")
+    st.page_link(court_directory, label="Court Directory", icon="⚖️")
 
 with col2:
 
