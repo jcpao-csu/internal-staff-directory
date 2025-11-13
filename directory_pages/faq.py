@@ -40,13 +40,13 @@ with st.expander("What user information is collected for the directory?"):
     user_data = Path("assets/text/help/user_data.txt")
     st.markdown(user_data.read_text(encoding="utf-8"), unsafe_allow_html=True)
 
-with st.expander("How to find **Hire Date** in Workday:"):
-    hire_date = Path("assets/text/help/find_hire_date.txt")
-    st.markdown(hire_date.read_text(encoding="utf-8"))
-
-with st.expander("How to find **Job Title** in Workday:"):
+with st.expander("How do I find my **Job Title** in Workday?"):
     job_title = Path("assets/text/help/find_job_title.txt")
     st.markdown(job_title.read_text(encoding="utf-8"))
+
+with st.expander("How do I find my **Hire Date** in Workday?"):
+    hire_date = Path("assets/text/help/find_hire_date.txt")
+    st.markdown(hire_date.read_text(encoding="utf-8"))
 
 with st.expander("How do I update my information in the directory?"):
     user_management = Path("assets/text/help/user_management.txt")
@@ -72,6 +72,6 @@ with st.expander("I don't see my headshot photo in the directory!"):
 
 st.subheader("About the Directory", divider="blue")
 
-with st.expander("Technical Notes:"):
+with st.expander("Technical Notes"):
     about = Path("assets/text/help/about.txt")
     st.markdown(about.read_text(encoding="utf-8"))
