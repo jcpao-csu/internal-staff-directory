@@ -73,7 +73,7 @@ st.markdown("<h1 style='text-align: center; color: black;'>Office Resources</h1>
 
 st.divider()
 
-col1, col2 = st.columns(2, gap="small", vertical_alignment="top", border=False, width="stretch")
+col1, col2 = st.columns(2, gap="medium", vertical_alignment="top", border=False, width="stretch")
 
 with col1:
 
