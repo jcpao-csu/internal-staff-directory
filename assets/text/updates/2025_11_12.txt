@@ -14,7 +14,7 @@ Community feedback and input are welcome!
 **My profile information is up-to-date and accurate:**
 - [ ] Name 
 - [ ] Job Title
-- [ ] :green-badge[Position] / :blue-badge[Assigned Unit] / :orange-badge[Office Location] / :violet-badge[Birthday] 
+- [ ] :green-badge[**Position**] / :blue-badge[**Assigned Unit**] / :orange-badge[**Office Location**] / :violet-badge[**Birthday**] 
 - [ ] Work Phone # 
 - [ ] Work Email Address (@jacksongov.org)
 - [ ] Personal Phone #
