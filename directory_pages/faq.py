@@ -30,7 +30,7 @@ st.markdown("<h1 style='text-align: center; color: black;'>Frequently Asked Ques
 
 st.divider()
 
-st.subheader("Internal Staff Directory Data Sharing Policy", divider="blue")
+st.subheader("Data Sharing Policy", divider="blue") # Internal Staff Directory 
 
 with st.expander("Will my personal information be shared publicly?"):
     data_sharing = Path("assets/text/help/data_sharing.txt")
