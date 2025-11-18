@@ -97,7 +97,7 @@ with st.sidebar:
         'Exec': 'Executive Staff', 
         'CTA': 'Chief Trial Attorneys', 
         'TTL': 'Team Trial Leaders', 
-        'APA': 'Assistant Prosecuting Attorneys',
+        'APA': 'APAs',
         # 'I': 'Investigators',
         # 'VA': 'Victim Advocates',
         # 'LA': 'Legal Assistants',
@@ -118,13 +118,13 @@ with st.sidebar:
     units_dict = {
         'All': 'All Units',
         'Exec': 'Executive Staff',
-        'GCU': 'General Crimes Unit (GCU)',
-        'SVU': 'Special Victims Unit (SVU)',
-        'VCU': 'Violent Crimes Unit (VCU)',
-        'CSU': 'Crime Strategies Unit (CSU)',
+        'GCU': 'GCU, General Crimes',
+        'SVU': 'SVU, Special Victims',
+        'VCU': 'VCU, Violent Crimes',
+        'CSU': 'CSU, Crime Strategies',
         # 'COMBAT': 'COMBAT',
         'Drug': 'Drug Court',
-        'FSD': 'Family Support Division',
+        'FSD': 'Family Support',
         'WARRANT': 'Warrant Desk'
     }
     unit_options = st.selectbox(
@@ -140,12 +140,12 @@ with st.sidebar:
     # Filter by location: 
     locations_dict = {
         'All': 'All Office Locations',
-        'Dt-11': 'Downtown Courthouse, 11th floor',
-        'Dt-10': 'Downtown Courthouse, 10th floor',
+        'Dt-11': 'Downtown, 11th',
+        'Dt-10': 'Downtown, 10th',
         # 'Dt-9': 'Downtown Courthouse, 9th floor (COMBAT)',
-        'Dt-7M': 'Downtown Courthouse, 7M',
-        'Indy': 'Eastern Jackson Courthouse, Independence',
-        'FSD': 'Family Support Division'
+        'Dt-7M': 'Downtown, 7M',
+        'Indy': 'East Jack, Independence',
+        'FSD': 'Family Support'
     }
     location_options = st.selectbox(
         label="**Filter by Office Location:**",
