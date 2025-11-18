@@ -64,7 +64,7 @@ def display_portal():
     st.markdown(
         """
         <style>
-        .space { margin-top: 300px; }
+        .space { margin-top: 200px; }
         </style>
         <div class="space"></div>
         """,
@@ -96,7 +96,7 @@ def display_portal():
             st.markdown("<h3 style='text-align: center; color: #0047ab;'>JCPAO Directory</h3>", unsafe_allow_html=True)
             st.markdown("<div style='text-align: center; font-size: small; font-weight: bold; color: #0047ab; '>Please verify the following information to access the directory</div>", unsafe_allow_html=True)
             st.divider()
-            
+
             # Email
             verified_email = st.text_input(
                 label="Enter email",
