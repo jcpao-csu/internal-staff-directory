@@ -91,8 +91,12 @@ def display_portal():
             width="stretch",
             height="content"
         ):
-            st.markdown(":small[*Please verify the following information to access the directory*]") # :material/gavel:
-
+            # st.markdown("<h1 style='text-align: center; color: black;'>Court-View Directory</h1>", unsafe_allow_html=True)
+            # st.markdown(":small[*Please verify the following information to access the directory*]", unsafe_allow_html=True) # :material/gavel:
+            st.markdown("<h3 style='text-align: center; color: #0047ab;'>JCPAO Directory</h3>", unsafe_allow_html=True)
+            st.markdown("<div style='text-align: center; font-size: small; font-weight: bold; color: #0047ab; '>Please verify the following information to access the directory</div>", unsafe_allow_html=True)
+            st.divider()
+            
             # Email
             verified_email = st.text_input(
                 label="Enter email",
