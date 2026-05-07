@@ -24,9 +24,11 @@ docket_call_trainings = r"https://www.youtube.com/playlist?list=PL2sfEiSjLlkwNKb
 search_warrant_training = r"https://youtu.be/o-00QWQ3K54"
 apa_trainings= r"https://youtube.com/playlist?list=PL2sfEiSjLlkye83HbFSazeWLrjk2rIQZM&si=tOxuvxsntaLcIXZY"
 wellness_training = r"https://www.youtube.com/watch?v=vTZPidK9ItQ"
+may2026_cle = r"https://youtube.com/playlist?list=PL2sfEiSjLlkwvLekeJE4tXmtM-oV5a9tC&si=jdWvYa69p-aydsR7"
 
 # Portal troubleshooting
 headshots = r"https://jacksonmo-my.sharepoint.com/:f:/g/personal/ujcho_jacksongov_org/EkQfmaAtb4xIkG8g8EDluEQB6zQdDATdw2CPYcgWcyNirw?e=LYIcnk"
+intake_survey = r"https://form.jotform.com/261024019483047"
 
 # Office social media
 jcpao_twitter = r"https://x.com/JACOProsecutor"
@@ -95,6 +97,7 @@ with col1:
     st.page_link(search_warrant_training, label="Search Warrant Training (Kristiane Bryant)", icon="🚨")
     st.page_link(apa_trainings, label="Oct 2025 APA Training", icon="📖")
     st.page_link(wellness_training, label="Nov 2025 ***Well-being: Mental Health*** Training", icon="❤️‍🩹")
+    st.page_link(may2026_cle, label="May 2026 APA CLE Trainings", icon="🎓")
 
     # CSU resources
     st.header("CSU Resources", divider="blue")
@@ -121,6 +124,7 @@ with col2:
     st.write("If you are experiencing any issues with the directory, please report them to [Joseph Cho](mailto:ujcho@jacksongov.org)! Thank you for your patience and understanding as we launch this online tool.")
     st.write("Likewise, to update your headshot photo, please contact [Joseph Cho](mailto:ujcho@jacksongov.org) with your desired photo. The Office will periodically hold headshot photo sessions for new employees and those interested in updating their office headshot photo. Staff can view office headshots via the link below:")
     st.page_link(headshots, label=":yellow-background[JCPAO Staff Headshots]", icon="📸")
+    st.page_link(intake_survey, label="**NEW HIRES**: Complete the Personnel Intake Survey", icon="📝")
 
     # Office social media
     st.header("Office Social Media", divider="blue")
