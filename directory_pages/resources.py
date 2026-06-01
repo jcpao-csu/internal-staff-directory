@@ -20,7 +20,9 @@ jaco_associates_portal = r"https://jacksonmo.sharepoint.com/sites/JacksonCountyM
 jaco_sharepoint = r"https://jacksonmo.sharepoint.com/_layouts/15/sharepoint.aspx"
 
 # Training resources 
-docket_call_trainings = r"https://www.youtube.com/playlist?list=PL2sfEiSjLlkwNKbonn6aefZvuJY9f_yYW"
+# docket_call_trainings = r"https://www.youtube.com/playlist?list=PL2sfEiSjLlkwNKbonn6aefZvuJY9f_yYW" # updated 06-01-26
+apa_karpel_trainings = r"https://www.youtube.com/playlist?list=PL2sfEiSjLlkwLilKEsb7q8MFi8CNbud3B" # updated 06-01-26
+va_karpel_training = r"https://youtu.be/smwCYN6j_Ws" # updated 06-01-26
 search_warrant_training = r"https://youtu.be/o-00QWQ3K54"
 apa_trainings= r"https://youtube.com/playlist?list=PL2sfEiSjLlkye83HbFSazeWLrjk2rIQZM&si=tOxuvxsntaLcIXZY"
 wellness_training = r"https://www.youtube.com/watch?v=vTZPidK9ItQ"
@@ -93,7 +95,8 @@ with col1:
     # Traning resources
     st.header("Training Resources", divider="blue")
 
-    st.page_link(docket_call_trainings, label="2025 Docket Call Karpel Training Refreshers", icon="📚")
+    st.page_link(apa_karpel_trainings, label="APA Karpel Training", icon="📚")
+    st.page_link(va_karpel_training, label="VA Karpel Training", icon="📚")
     st.page_link(search_warrant_training, label="Search Warrant Training (Kristiane Bryant)", icon="🚨")
     st.page_link(apa_trainings, label="Oct 2025 APA Training", icon="📖")
     st.page_link(wellness_training, label="Nov 2025 ***Well-being: Mental Health*** Training", icon="❤️‍🩹")
