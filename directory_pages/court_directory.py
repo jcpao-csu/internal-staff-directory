@@ -60,7 +60,7 @@ def update_df():
     if st.session_state["courtview_searched_text"]: # Added searched_text to main clickback action 
         # Update search function to split entered text into unique words, and check if any words appear in specified cols
 
-        searched_text = st.session_state["staffview_searched_text"].strip().lower()
+        searched_text = st.session_state["courtview_searched_text"].strip().lower()
         words = list({w for w in searched_text.split() if w}) # split search text into unique words
         search_cols = ["Full Name", "First Name", "Middle Name", "Last Name", "Suffix", "Preferred Name"]
         combined = filtered_df[search_cols].astype(str).agg(" ".join, axis=1).str.lower() # combine searchable columns into a single lowercase string per row
