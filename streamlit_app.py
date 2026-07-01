@@ -1,6 +1,7 @@
 import streamlit as st
 from pathlib import Path
 import time
+import base64
 
 from connect_data import log_user
 
@@ -20,10 +21,15 @@ st.set_page_config(
     }
 )
 
-# --- JCPAO Streamlit page logo --- 
+# --- JCPAO Streamlit page logo ---
 st.logo(jcpao_logo, size="large", link="https://www.jacksoncountyprosecutor.com")
 
-# --- Connect to database --- 
+@st.cache_data
+def get_logo_base64(path: Path) -> str:
+    """Base64-encode the logo so it can be centered via custom HTML."""
+    return base64.b64encode(path.read_bytes()).decode()
+
+# --- Connect to database ---
 
 # --- Initialize st.session_state --- 
 if "verified" not in st.session_state:
@@ -55,7 +61,29 @@ def verify_attempt():
         time.sleep(2)
         fail_message.empty()
 
-# --- Enter security code --- 
+# --- New user dialog ---
+
+@st.dialog("New to the JCPAO Directory?", width="small")
+def new_user_dialog():
+    st.markdown(
+        """
+        The **JCPAO Staff Directory** is *only* available to current JCPAO staff
+        with an active **@jacksongov.org** email.
+
+        If you're a new hire and haven't been added to the directory yet, please
+        complete the **Personnel Intake Survey** below. Once submitted, your
+        information will be reviewed and you will receive an email confirming you
+        have been successfully added.
+        """
+    )
+    st.write(" ")
+    st.page_link(
+        "https://form.jotform.com/261024019483047",
+        label="Personnel Intake Survey",
+        icon=":material/open_in_new:",
+    )
+
+# --- Enter security code ---
 
 def display_portal():
     """Display access portal"""
@@ -64,7 +92,7 @@ def display_portal():
     st.markdown(
         """
         <style>
-        .space { margin-top: 200px; }
+        .space { margin-top: 100px; }
         </style>
         <div class="space"></div>
         """,
@@ -73,16 +101,26 @@ def display_portal():
 
     # Display form
     cols = st.columns(
-        3, 
+        3,
         gap=None,
-        vertical_alignment="center",
+        vertical_alignment="top",
         border=False,
         width="stretch"
     )
 
     with cols[1]:
-        
-        # Form to verify user 
+
+        # Centered JCPAO logo
+        st.markdown(
+            f"""
+            <div style='text-align: center; margin-bottom: 36px;'>
+                <img src='data:image/png;base64,{get_logo_base64(jcpao_logo)}' width='200'>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        # Form to verify user
         with st.form(
             "verify_user",
             clear_on_submit=False,
@@ -93,9 +131,8 @@ def display_portal():
         ):
             # st.markdown("<h1 style='text-align: center; color: black;'>Court-View Directory</h1>", unsafe_allow_html=True)
             # st.markdown(":small[*Please verify the following information to access the directory*]", unsafe_allow_html=True) # :material/gavel:
-            st.markdown("<h3 style='text-align: center; color: #0047ab;'>JCPAO Directory</h3>", unsafe_allow_html=True)
-            st.markdown("<div style='text-align: center; font-size: small; font-weight: bold; color: #0047ab; '>Please verify the following information to access the directory</div>", unsafe_allow_html=True)
-            st.divider()
+            st.markdown("<div style='text-align: center; font-size: 1.75rem; font-weight: bold; color: #000000;'>JCPAO Directory</div>", unsafe_allow_html=True)
+            st.markdown("<div style='text-align: center; font-size: small; color: #000000; margin-bottom: 20px;'>Please verify the following information to access the directory</div>", unsafe_allow_html=True)
 
             # Email
             verified_email = st.text_input(
@@ -126,7 +163,17 @@ def display_portal():
                 width="stretch"
             )
 
-# --- Run STREAMLIT APP via st.navigation --- 
+        # New user dialog trigger
+        if st.button(
+            "New user? Click here",
+            key="new_user_btn",
+            icon=":material/person_add:",
+            type="tertiary",
+            use_container_width=True,
+        ):
+            new_user_dialog()
+
+# --- Run STREAMLIT APP via st.navigation ---
 
 
 # --- RUN STREAMLIT APP --- 
