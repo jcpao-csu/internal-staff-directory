@@ -3,7 +3,7 @@ from pathlib import Path
 import time
 import base64
 
-from connect_data import log_user
+from connect_data import log_user, STAFF_EMAILS
 
 # --- Configure Streamlit page settings --- 
 
@@ -50,7 +50,7 @@ def verify_attempt():
     # Check verification
     # TODO - add security of checking if the @jacksongov.org email actually exists/is active in the database prior to verification
     # if (email.endswith("@courts.mo.gov") or email.endswith("@jacksongov.org")) and code == security_code:
-    if email.endswith("@jacksongov.org") and code == security_code:
+    if email in STAFF_EMAILS and code == security_code:
         log_user(email, "LOGIN") # also track ip address? [st.context.ip_address]
         success_message = st.success(f"Verification successful: *{st.session_state['verified_email']}*")
         time.sleep(2)
@@ -71,7 +71,7 @@ def new_user_dialog():
         with an active **@jacksongov.org** email.
 
         If you're a new hire and haven't been added to the directory yet, please
-        complete the **Personnel Intake Survey** below. Once submitted, your
+        complete the [**Personnel Intake Survey**](https://form.jotform.com/261024019483047) below. Once submitted, your
         information will be reviewed and you will receive an email confirming you
         have been successfully added.
         """

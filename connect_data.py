@@ -142,7 +142,20 @@ else:
 
 STAFF_VIEW = staff_view.copy()
 
-# Get office PETS table 
+# Unique work email addresses (for cross-referencing login attempts against active staff)
+if STAFF_VIEW.empty:
+    STAFF_EMAILS = []
+else:
+    STAFF_EMAILS = (
+        STAFF_VIEW["Work Email Address"]
+        .dropna()
+        .str.strip()
+        .str.lower()
+        .unique()
+        .tolist()
+    )
+
+# Get office PETS table
 pets = query_table("SELECT * FROM active_pets")
 if pets.empty:
     pets = pd.DataFrame()
