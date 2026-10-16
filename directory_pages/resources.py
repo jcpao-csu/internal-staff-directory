@@ -12,7 +12,8 @@ mshp_manual = r"https://www.mshp.dps.missouri.gov/CJ08Client/Home/ChargeCode"
 mo_statutes = r"https://revisor.mo.gov/main/Home.aspx"
 
 # Office help
-it_helpdesk = r"http://itservicecenter.jacksongov.org/helpdesk"
+# it_helpdesk = r"http://itservicecenter.jacksongov.org/helpdesk" # OLD LINK
+it_helpdesk = r"https://forms.monday.com/forms/06180417c75405da4b3aa87d0191dde8?r=use1" # NEW - MONDAY.COM (10-16-2026)
 whitelist = r"https://jcgis.jacksongov.org/it/whitelist.html"
 workday = r"https://wd5.myworkday.com/wday/authgwy/jacksongov/login.htmld?returnTo=%2fjacksongov%2fd%2fhome.htmld%3freloadToken%3dcd1ecc783d150ffa2cd0a828900ca9cb2570101ba04c0f9ff9d446577767b1d4"
 jaco_link = r"https://jacksonmo.sharepoint.com/sites/JACOLink"
@@ -27,6 +28,7 @@ search_warrant_training = r"https://youtu.be/o-00QWQ3K54"
 apa_trainings= r"https://youtube.com/playlist?list=PL2sfEiSjLlkye83HbFSazeWLrjk2rIQZM&si=tOxuvxsntaLcIXZY"
 wellness_training = r"https://www.youtube.com/watch?v=vTZPidK9ItQ"
 may2026_cle = r"https://youtube.com/playlist?list=PL2sfEiSjLlkwvLekeJE4tXmtM-oV5a9tC&si=jdWvYa69p-aydsR7"
+oct2026_cle = r"https://www.youtube.com/playlist?list=PLfZEAoUyGrW8"
 
 # Portal troubleshooting
 headshots = r"https://jacksonmo-my.sharepoint.com/:f:/g/personal/ujcho_jacksongov_org/EkQfmaAtb4xIkG8g8EDluEQB6zQdDATdw2CPYcgWcyNirw?e=LYIcnk"
@@ -98,10 +100,11 @@ with col1:
     st.page_link(apa_karpel_trainings, label="APA Karpel Training", icon="📚")
     st.page_link(va_karpel_training, label="VA Karpel Training", icon="📚")
     st.caption("Video is censored due to sensitive content. Uncensored video is available in H Drive under *Karpel Training Resources > Training Videos*")
-    st.page_link(search_warrant_training, label="Search Warrant Training (Kristiane Bryant)", icon="🚨")
+    st.page_link(search_warrant_training, label="Search Warrant Training (APA Kristiane Bryant)", icon="🚨")
     st.page_link(apa_trainings, label="Oct 2025 APA Training", icon="📖")
     st.page_link(wellness_training, label="Nov 2025 ***Well-being: Mental Health*** Training", icon="❤️‍🩹")
     st.page_link(may2026_cle, label="May 2026 APA CLE Trainings", icon="🎓")
+    st.page_link(oct2026_cle, label="Oct 2026 APA CLE Trainings", icon="🎓")
 
     # CSU resources
     st.header("CSU Resources", divider="blue")
@@ -115,7 +118,7 @@ with col2:
     # Office help
     st.header("Office Help", divider="blue")
 
-    st.page_link(it_helpdesk, label="IT Help Desk ***:red[(must be connected to County network)]***", icon="🖥️")
+    st.page_link(it_helpdesk, label="IT Help Desk ***:red[(NEW)]***", icon="🖥️")
     st.page_link(whitelist, label="Whitelist public websites within County network", icon="🌐")
     st.page_link(workday, label="Workday", icon="💼")
     st.page_link(jaco_link, label=":yellow-background[JACO Link (New Associate Intranet Site) ***:red[(NEW)]***]", icon="🏢")
