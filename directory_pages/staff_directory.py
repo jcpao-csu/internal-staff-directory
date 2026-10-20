@@ -287,7 +287,8 @@ def display_employee(row):
                 'Dt-9': 'Downtown, 9th',
                 'Dt-7M': 'Downtown, 7M',
                 'Indy': 'Eastern Jack, Indy',
-                'FSD': 'Downtown, FSD'
+                'FSD': 'Downtown, FSD',
+                'Dt-1305 Locust': 'Downtown, 1305 Locust'
             }
             # location_badge = st.badge(f"**Office Location:** {locations_badge.get(row['Office Location'], row['Office Location'])}", icon="🏢", color="orange")
 

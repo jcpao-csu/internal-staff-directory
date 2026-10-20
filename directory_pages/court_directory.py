@@ -149,7 +149,8 @@ with st.sidebar:
         # 'Dt-9': 'Downtown Courthouse, 9th floor (COMBAT)',
         'Dt-7M': 'Downtown, 7M',
         'Indy': 'East Jack, Independence',
-        'FSD': 'Family Support'
+        'FSD': 'Family Support',
+        'Dt-1305 Locust': 'Downtown, 1305 Locust'
     }
     location_options = st.selectbox(
         label="**Filter by Office Location:**",
