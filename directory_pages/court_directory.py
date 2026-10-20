@@ -150,7 +150,7 @@ with st.sidebar:
         'Dt-7M': 'Downtown, 7M',
         'Indy': 'East Jack, Independence',
         'FSD': 'Family Support',
-        'Dt-1305 Locust': 'Downtown, 1305 Locust'
+        # 'Dt-1305 Locust': 'Downtown, 1305 Locust' # shouldn't be needed as Investigators ONLY
     }
     location_options = st.selectbox(
         label="**Filter by Office Location:**",
